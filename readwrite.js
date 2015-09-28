@@ -11,7 +11,7 @@ console.log(ROOT_APP_PATH);
 
 app.get("/", function(req, res){
 	
-	salvaArquivo();
+	salvaArquivo(req.param('s'));
 	res.end("Salvou o arquivo");
 	 
 
@@ -33,8 +33,8 @@ app.listen(3000)
 console.log("Servidor rodando...")
 
 
-function salvaArquivo(){
-	fs.writeFile("test.txt", "Arquivo alterado!", function(err) {
+function salvaArquivo(string){
+	fs.writeFile("test.txt", string, function(err) {
 	    if(err) {
 	        return console.log(err);
 	    }
